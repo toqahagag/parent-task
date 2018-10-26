@@ -1,0 +1,184 @@
+body{
+    background-color:$color-bg;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    font-family:  Heebo;
+}
+/* GENERAL STYLES*/
+.txt-bold{
+    font-weight: bold;
+}
+.txt-primary{
+    color:$color-primary;
+}
+.txt-accent{
+    color:$color-accent;
+}
+.txt-bg{
+    color:$color-bg;
+}
+.txt-secondary{
+    color:$color-secondary;
+}
+.w-60{
+    width:60%;
+}
+.fz-15{
+    font-size: 15px;
+}
+.fz-14{
+    font-size: 14px;
+}
+.fz-25{
+    font-size:25px;
+}
+.fz-12{
+    font-size: 12px;
+}
+.fz-30{
+    font-size: 30px;
+}
+.bg-second{ 
+    background-color:$color-sec-bg;
+}
+.bg-prime{ 
+    background-color:$color-primary;
+}
+hr {
+    border: 0;
+    border-top: 1px solid $color-sec-bg;
+    display: inline-block;
+    width: 100%;
+  }
+/* GENERAL STYLES*/
+.MainContainer{
+    min-height: 70vh;
+}
+header{
+    height: 70px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+    background-color: $color-white;
+    .navbar{  
+        li{
+            margin-right:30px !important;
+            &:last-child{
+                            margin-right:0px !important;
+                        }
+        
+            .nav-link{
+                font-family:  Heebo !important;
+                @extend .fz-15;
+                @extend .txt-bold;
+                @extend .txt-primary;
+                font-style: normal !important;
+                font-stretch: normal !important;
+                line-height: normal;
+                letter-spacing: normal !important;
+            
+            }
+        }
+    }
+}
+.btn-theme {
+    border-radius: 20px !important;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2) !important;
+    background-color: $color-accent;
+    color: $color-white !important;
+    font-size:15px !important;
+    font-style: normal !important;
+    font-stretch: normal !important;
+    line-height: normal !important;
+    letter-spacing: normal !important;
+    font-family:  Heebo !important;
+    padding: 8px 20px !important;
+  }
+  .btn-theme-secondary{
+    border-radius: 20px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+    border: solid 1px $color-accent;
+    background-color: $color-bg;
+    font-size:15px !important;
+    font-style: normal !important;
+    font-stretch: normal !important;
+    line-height: normal !important;
+    letter-spacing: normal !important;
+    font-family:  Heebo !important;
+    padding: 8px 20px !important;
+  }
+  /**/
+  .user-list{
+    .user-list-header{
+        margin-top:-20px;
+    }
+    .user-list-body{
+    border-radius: 10px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+    .user-list-items{
+        .user-list-single{
+            &:last-child{
+                hr{
+                display: none;
+            }
+        }
+        .user-list-single-row{
+            height:85px;
+            &:hover{
+                border-radius: 10px;
+                background-color: rgba(142, 68, 173, 0.05);
+            }
+            img{
+                width:55px;
+            }
+            .user-name{
+                font-weight:500;
+            }
+        }
+        .actions{
+            .btn-link{
+                border:1px solid $color-accent;
+                color:$color-accent;
+                width:30px;
+                height:30px;
+                padding-top:3px;
+            }
+        }
+        }
+    }
+    }
+  }
+  input[type="text"], input[type="password"]{
+        &:focus{
+            border-color: $color-accent;
+            box-shadow: unset !important;
+        }
+        @extend .txt-primary;
+        @extend .fz-15;
+        height:36px;
+  }
+  .ediatable-img{
+      position: relative;
+      text-align: center;
+      width: 100%;
+      top: -60px;
+      img{
+          width:100px;
+          border: 3px solid $color-white;
+          &.dumy-avatar-img{
+              width:30px;
+              border-color:transparent;
+              position: relative;
+              top:30%
+          }
+      }
+  }
+  .modal-user-data-body{
+    margin-top:-50px;
+}
+.dumy-avatar{
+    width:100px;
+    border-radius: 50px;
+    height: 100px;
+    border: 3px solid $color-white;
+}

@@ -1,0 +1,111 @@
+<section class="body-container">
+  <div class="user-list">
+    <div class="uppser-section bg-second">
+      <div class="container pb-2">
+        <div class="row">
+          <div class="col pl-0">
+              <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb bg-second  fz-12">
+                    <li class="breadcrumb-item "><a class="txt-accent" routerLink="home">Home</a></li>
+                    <li class="breadcrumb-item txt-accent" aria-current="page">Dashboard</li>
+                  </ol>
+                </nav>
+          </div>
+        </div>
+      <div class="row user-list-header">
+        <div class="col txt-primary fz-30 txt-bold">Users List</div>
+        <div class="col text-right">
+            <button class="btn btn-theme" (click)="open(content)"><i class="fa fa-plus"></i> New User</button>
+            
+        </div>
+      </div>
+    </div>
+
+    </div>
+    <div class="container user-list-body bg-white mt-4 px-4 py-3">
+    <div class="row mb-4">
+        <div class="col fz-12 txt-secondary">User</div>
+        <div class="col fz-12 txt-secondary text-right"> Actions </div>
+      </div>
+    <div class="user-list-items">
+      
+      <div class="user-list-single" *ngFor="let user of users" >
+        <div class="row user-list-single-row">
+          <div class="col d-flex">
+            <div class="align-self-center">
+            <img class="mr-2 img img-fluid rounded-circle" [src]="user.avatar" alt=""/>
+              <span class="txt-primary fz-15 user-name">{{user.name}}</span>
+            </div>
+          </div>
+            <div class="col d-flex justify-content-end">
+                <div class="actions align-self-center">
+                  <a class="btn btn-link px-2 mr-2"  (click)="open(content,user)"><i class="fa fa-pencil fz-15" arial-hidden="true"></i></a>
+                  <a class="btn btn-link px-2"  (click)="openDeleteUser(deleteUser,user)"><i class="fa fa-trash fz-15"></i></a>
+                  <i class="fa fa-chevron-right txt-accent ml-5"></i>
+                </div>
+              </div>
+        </div>
+        <div class="row">
+          <hr/>
+        </div>
+    </div>
+      
+    </div>
+  </div>
+  </div>
+</section>    
+<ng-template #content let-modal>
+    <div *ngIf="userObj && userObj.avatar; else emptyImg" class="d-flex">
+      <div  class="align-self-center ediatable-img">
+     <img  class="img img-fluid rounded-circle" [src]="userObj.avatar" alt="">
+    </div>
+  </div>
+ 
+     <ng-template #emptyImg>
+        <div class="d-flex align-self-center">
+      <div class="align-self-center bg-prime dumy-avatar ediatable-img">
+          <img class="img img-fluid dumy-avatar-img"  src="../../assets/images/user.png" alt="">
+      </div>
+    </div>
+    </ng-template>
+    
+    
+    <div class="modal-body modal-user-data-body">
+        <form [formGroup]="addEditForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label class="fz-14 txt-secondary">Name</label>
+                <input type="text" formControlName="Name" [(ngModel)]="userObj.name" placeholder="Name..." class="form-control fz-14 txt-secondary" [ngClass]="{ 'is-invalid': submitted && f.Name.errors }" />
+                <div *ngIf="submitted && f.Name.errors" class="invalid-feedback">
+                    <div *ngIf="f.Name.errors.required">Name is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="fz-14 txt-secondary">Job title</label>
+                <input type="text" formControlName="jobTitle" [(ngModel)]="userObj.job" placeholder="Job title..." class="form-control  fz-14 txt-secondary" [ngClass]="{ 'is-invalid': submitted && f.jobTitle.errors }" />
+                <div *ngIf="submitted && f.jobTitle.errors" class="invalid-feedback">
+                    <div *ngIf="f.jobTitle.errors.required">Job title is required</div>
+                </div>
+            </div>
+            <div class="form-group mt-4 pt-2">
+              <div class="row px-3">
+              <button class="col btn btn-theme-secondary mr-4" (click)="modal.dismiss('Cross click')">Cancel</button>
+              <button [disabled]="loading" class="col btn btn-theme">{{UserButton}}</button>
+            </div>
+          </div>
+        </form>
+    </div>
+  </ng-template>
+  <ng-template #deleteUser let-modal>
+    <div class="modal-body text-center">
+            <p class="form-group text-secondary fz-15">
+               Are you sure you want to delete
+            </p>
+           <p>{{DeletedUser.name}}</p>
+            <div class="form-group mt-4 pt-2">
+              <div class="row px-3">
+              <button class="col btn btn-theme-secondary mr-4" (click)="modal.dismiss('Cross click')">No</button>
+              <button [disabled]="loading" class="col btn btn-theme" (click)="delete(DeletedUser.id)">Yes</button>
+            </div>
+          </div>
+    </div>
+  </ng-template>
