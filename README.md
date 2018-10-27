@@ -2,9 +2,9 @@
 Firstly, run backend database
 `npm run json-server`
 
-Login credentials
-Username: admin
-Password: admin123
+# Login credentials
+Username: `admin`
+Password: `admin123`
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.2.
 
