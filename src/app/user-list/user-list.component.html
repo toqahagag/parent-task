@@ -6,8 +6,8 @@
           <div class="col pl-0">
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb bg-second  fz-12">
-                <li class="breadcrumb-item ">
-                  <a class="txt-accent" (click)="gotoHome()" [routerLink]="home">Home</a>
+                <li class="breadcrumb-item txt-accent">
+                  <a class="" (click)="gotoHome()">Home</a>
                 </li>
                 <li class="breadcrumb-item txt-accent" aria-current="page">Dashboard</li>
               </ol>
@@ -32,6 +32,9 @@
             <div class="col fz-12 txt-secondary text-right"> Actions </div>
           </div>
           <div class="user-list-items">
+            <div class="text-center loading-container" *ngIf="loading">
+              <img class="mr-2" src="../../assets/images/loading.gif" /> <span class="txt-accent">Loading</span>
+            </div>
             <div class="user-list-single" *ngFor="let user of users">
               <div class="row user-list-single-row" id="item_{{user.id}}">
                 <div *ngIf="user.avatar; else noImg" class="col d-flex">
@@ -88,7 +91,7 @@
           </ng-template>
           <div class="txt-primary fz-25 text-center mt-3">{{EditedUser}}</div>
           <div class="row mt-3 ml-2">
-            <button [disabled]="loading" class="col btn btn-theme" (click)="open(content,user)">
+            <button class="col btn btn-theme" (click)="open(content,user)">
               <i class="fa fa-pencil"></i> Edit
             </button>
             <button class="col btn btn-theme-secondary mr-4" (click)="openDeleteUser(deleteUser,user)">
@@ -138,7 +141,7 @@
       <div class="form-group pt-2">
         <div class="row px-3">
           <button class="col btn btn-theme-secondary mr-4" (click)="modal.dismiss('Cross click')">Cancel</button>
-          <button [disabled]="loading" class="col btn btn-theme">{{UserButton}}</button>
+          <button  class="col btn btn-theme">{{UserButton}}</button>
         </div>
       </div>
     </form>
@@ -153,7 +156,7 @@
     <div class="form-group mt-4 pt-2">
       <div class="row px-3">
         <button class="col btn btn-theme-secondary mr-4" (click)="modal.dismiss('Cross click')">No</button>
-        <button [disabled]="loading" class="col btn btn-theme" (click)="delete(DeletedUser.id)">Yes</button>
+        <button  class="col btn btn-theme" (click)="delete(DeletedUser.id)">Yes</button>
       </div>
     </div>
   </div>

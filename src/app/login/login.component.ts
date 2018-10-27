@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   loading = false;
   submitted = false;
-
+  UnAuth=false;
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
@@ -42,11 +42,12 @@ else{
     this.router.navigate(['/user-list']);
   }
   else{
+    this.UnAuth=true;
     this.toastr.error('login failed', 'Error!');
     
   }
 } 
-    this.loading = true;
+  
 
 }
 get formData() { return this.loginForm.controls; }

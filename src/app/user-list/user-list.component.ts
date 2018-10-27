@@ -22,6 +22,7 @@ export class UserListComponent implements OnInit {
   EditedUser:any;
   EditedUserImg;
   EditID;
+  loading;
   constructor(public toastr: ToastrService,public rest:RestService, private router: Router, private route: ActivatedRoute,private modalService: NgbModal,private formBuilder: FormBuilder) {
    }
    
@@ -29,6 +30,7 @@ export class UserListComponent implements OnInit {
   submitted = false;
   UserButton:string;
   ngOnInit() {
+    this.loading=true;
     this.getUsers();
   }
   createFormGroup() {
@@ -44,14 +46,12 @@ export class UserListComponent implements OnInit {
       
     }
     else{
-      debugger
       this.UserButton="Add";
       if(this.user){
       this.userObj.avatar="";
       this.userObj.name="";
       this.userObj.job="";
       }
-     // this.getUser(0);
     }
    this.createFormGroup();
    this.addEditForm.clearValidators();
@@ -114,6 +114,7 @@ export class UserListComponent implements OnInit {
         this.rest.getUsers().subscribe(data => {
           console.log(data);
           this.users = data;
+          this.loading=false;
         });
         
       }
@@ -149,7 +150,6 @@ export class UserListComponent implements OnInit {
 
       }
       update(user) {
-        debugger;
         this.rest.updateUser(this.user.id, this.user).subscribe((result) => {
           this.toastr.success('user data updated successfully', 'Success!');
          this.modalService.dismissAll();
@@ -171,7 +171,6 @@ export class UserListComponent implements OnInit {
           );
       }
       ShowUserDetails(e,user){
-        debugger
         var exist
       var ClassExist=document.getElementsByClassName("user-list-single-row");
       for (var i = 0; i < ClassExist.length; i++){
@@ -203,7 +202,6 @@ export class UserListComponent implements OnInit {
       }
       closeDetails(){
         this.isCollapsed=true;
-        debugger;
         var elems = document.querySelectorAll(".user-list-single-row");
         for (var i = 0; i < elems.length; i++) {
           elems[i].classList.remove('active-item');
