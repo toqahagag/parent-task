@@ -46,6 +46,12 @@ body{
 .bg-prime{ 
     background-color:$color-primary;
 }
+.bg-theme{
+    background-color: $color-accent;
+}
+.bg-theme-default{
+    background-color: $color-bg;
+}
 hr {
     border: 0;
     border-top: 1px solid $color-sec-bg;
@@ -115,6 +121,7 @@ header{
     .user-list-body{
     border-radius: 10px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+    min-height: 70vh;
     .user-list-items{
         .user-list-single{
             &:last-child{
@@ -127,12 +134,34 @@ header{
             &:hover{
                 border-radius: 10px;
                 background-color: rgba(142, 68, 173, 0.05);
+                .user-name{
+                    color:$color-primary !important;
+                }
+                .btn-show-details{
+                    i{
+                    color:$color-accent !important;
+                    }
+                    cursor: pointer !important;
+                }
+                border-radius: 10px;
             }
             img{
                 width:55px;
             }
             .user-name{
                 font-weight:500;
+            }
+            .no-user-container{
+                width:55px;
+                height: 55px;
+                border-radius: 50px;
+                img{
+                    width: 18px;
+                    position: relative;
+                    top: -5%;
+                    left: 35%;
+
+                }
             }
         }
         .actions{
@@ -173,12 +202,65 @@ header{
           }
       }
   }
-  .modal-user-data-body{
-    margin-top:-50px;
+  .modal-dialog{
+    min-width: 360px;
+  .modal-body{
+      min-width: 360px;
+      &.modal-user-data-body{
+        margin-top:-50px;
+    }
 }
+  }
 .dumy-avatar{
     width:100px;
     border-radius: 50px;
     height: 100px;
     border: 3px solid $color-white;
+}
+.edit-user-container{
+    border-radius: 10px;
+    box-shadow: -2px 0 4px 0 rgba(0, 0, 0, 0.2);
+    min-height: 70vh;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+    .btn-close-details{
+        position: relative;
+        top: -9%
+    }
+   // margin-top: -15px;
+   // margin-right: -9px;
+    img{
+        width: 125px;
+    }
+.ediatable-img-dummy{
+    text-align: center;
+    width:125px;
+    height: 125px;
+    border-radius: 63px;
+        .dumy-avatar-img{
+            width:30px;
+            border-color:transparent;
+            position: relative;
+            top: 35%;
+        
+
+    }
+}
+}
+.active-item{
+    @extend .bg-theme;
+    .user-name{
+      @extend  .text-white;
+    }
+    .list-actions{
+        .btn-action{
+        display:none !important;
+        }
+        .btn-show-details{
+            i{
+            @extend .text-white;
+            }
+            pointer-events: none;
+        }
+    }
 }

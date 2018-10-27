@@ -19,7 +19,7 @@ export class RestService {
     return body || { };
   }
   getUsers(): Observable<any> {
-    debugger;
+    ;
     return this.http.get(endpoint + 'users').pipe(
       map(this.extractData));
   }
@@ -30,10 +30,10 @@ export class RestService {
   }
   
   addUser (user): Observable<any> {
-    debugger
+    
     console.log(user);
     return this.http.post<any>(endpoint + 'users', user , httpOptions).pipe(
-      tap((user) => console.log(`added user w/ id=${user.id}`)),
+      tap(_ => console.log(`added user w/ id=${user.id}`)),
       catchError(this.handleError<any>('addUser'))
     );
   }
@@ -45,7 +45,7 @@ export class RestService {
   }
   
   deleteUser (id): Observable<any> {
-    debugger
+    
     return this.http.delete<any>(endpoint + 'users/' + id, httpOptions).pipe(
       tap(_ => console.log(`deleted user id=${id}`)),
       catchError(this.handleError<any>('deleteUser'))

@@ -18,10 +18,10 @@
             <a class="nav-link" routerLink="contact">Contact</a>
           </li>
           <li>
-              <a class="nav-link btn btn-theme" routerLink="login">Login</a>
+              <a class="nav-link btn btn-theme" *ngIf="!isLoggedIn()" routerLink="login">Login</a>
           </li>
           <li>
-              <a class="nav-link btn btn-theme" routerLink="user-list">Enquire</a>
+              <a class="nav-link btn btn-theme" *ngIf="isLoggedIn()"  routerLink="user-list">Enquire</a>
           </li>
         </ul>
       </div>
